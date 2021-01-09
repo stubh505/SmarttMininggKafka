@@ -12,4 +12,4 @@ mvn clean compile assembly:single
 ```
 java -jar <jar-name> <topic-name> <data-set-name> <output-file-name>
 ```
-- Filtered data is stored in new topic named "<original-topic>_FILTERED"
+- Filtered data is stored in new topic named ```"<original-topic>_FILTERED"```
