@@ -14,9 +14,9 @@ import java.util.Scanner;
 
 public class Producer {
 
-    private String topic;
-    private File dataSet;
-    private Logger logger = LoggerFactory.getLogger(Producer.class);
+    private final String topic;
+    private final File dataSet;
+    private final Logger logger = LoggerFactory.getLogger(Producer.class);
 
     public Producer(String topic, File dataSet) {
         this.topic = topic;
