@@ -28,7 +28,7 @@ public class SmarttMininggKafkaRunner {
             logger.info("Production complete");
         }
 
-        for (int i = 45; i >= 0; i--) {
+        for (int i = 10; i >= 0; i--) {
             logger.info("Sleeping for "+i+" seconds");
             Thread.sleep(1000);
         }
@@ -37,7 +37,7 @@ public class SmarttMininggKafkaRunner {
         new Filter().stream(topic);
         logger.info("Filtering complete");
 
-        for (int i = 45; i >= 0; i--) {
+        for (int i = 10; i >= 0; i--) {
             logger.info("Sleeping for "+i+" seconds");
             Thread.sleep(1000);
         }
