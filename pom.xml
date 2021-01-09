@@ -44,7 +44,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.androvista.kaustubh.kafka.Producer</mainClass>
+                            <mainClass>com.kaustubh.smarttminingg.kafka.SmarttMininggKafkaRunner</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
