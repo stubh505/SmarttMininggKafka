@@ -14,7 +14,7 @@ public class SmarttMininggKafkaRunner {
 
     private static Logger logger = LoggerFactory.getLogger(SmarttMininggKafkaRunner.class);
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         String topic = args[0];
         String dataset = args[1];
         String output = args[2];
@@ -28,11 +28,21 @@ public class SmarttMininggKafkaRunner {
             logger.info("Production complete");
         }
 
+        for (int i = 45; i >= 0; i--) {
+            logger.info("Sleeping for "+i+" seconds");
+            Thread.sleep(1000);
+        }
+
         logger.info("Starting filter");
         new Filter().stream(topic);
         logger.info("Filtering complete");
 
-        res = new Consumer(topic, new File(output)).consume();
+        for (int i = 45; i >= 0; i--) {
+            logger.info("Sleeping for "+i+" seconds");
+            Thread.sleep(1000);
+        }
+
+        res = new Consumer(topic+"_FILTERED", new File(output)).consume();
 
         if (res) {
             logger.info("Consumption complete");

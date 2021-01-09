@@ -37,6 +37,7 @@ public class Consumer {
         properties.setProperty(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
         properties.setProperty(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         properties.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+        properties.setProperty(ConsumerConfig.GROUP_ID_CONFIG, "java-filtered-consumer");
         properties.setProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
 
         // creating consumer
@@ -49,7 +50,7 @@ public class Consumer {
         KafkaConsumer<String, String> consumer = createConsumer();
         logger.info("Consumer Created");
 
-        consumer.subscribe(Collections.singleton(topic + "_FILTERED"));
+        consumer.subscribe(Collections.singleton(topic));
 
         BufferedWriter br = new BufferedWriter(new FileWriter(dataSet));
 
@@ -70,7 +71,7 @@ public class Consumer {
             for (ConsumerRecord<String, String> record : records) {
                 logger.info("Key : "+record.key()+" Value : "+record.value());
                 logger.info("Partition : "+record.partition()+ " Offset : "+record.offset());
-                br.write(record.value());
+                br.write(record.value()+"\n");
             }
         }
 
